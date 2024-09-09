@@ -1,55 +1,66 @@
-function writeCookie(){
-    
-	tempo = prompt("What would it be?");
-	splitted = document.cookie.split(";")[0];
-	if (splitted == "null" || splitted == "," || splitted == "")
-	{
-		document.cookie = tempo;
+function sanitizeInput(input) {
+	const element = document.createElement('div');
+	element.innerText = input;
+
+	if (element.innerHTML !== element.innerText) {
+		throw new Error('Invalid input');
 	}
-	else
-	{
-		console.log(splitted + "|" + tempo);
-		document.cookie = splitted + "|" + tempo;
+	return element.innerHTML;
+}
+
+function writeCookie() {
+	try {
+		const tempo = sanitizeInput(prompt("What would it be?"));
+		if (tempo) {
+			const currentCookies = document.cookie.split(";")[0];
+			const newCookie = currentCookies ? `${currentCookies}|${tempo}` : tempo;
+			document.cookie = newCookie;
+			addTodoToDOM(tempo);
+		}
 	}
+	catch (e) {
+		alert(e.message);
+	}
+}
+
+function addTodoToDOM(todoText) {
+	const todoList = document.getElementById('ft_list');
+	const todoDiv = document.createElement('div');
+	todoDiv.innerHTML = todoText;
+	todoDiv.onclick = function () {
+		if (confirm(`Do you want to remove "${todoText}"?`)) {
+			removeCookie(todoText);
+			todoDiv.remove();
+		}
+	};
+	todoList.prepend(todoDiv);
+}
+
+function removeCookie(todoText) {
+	const currentCookies = document.cookie.split(";")[0];
+	
+	if (currentCookies === todoText) {
+		console.log("removed");
+		document.cookie = "|";
+		return;
+	}
+	
+	const updatedCookies = currentCookies.split('|').filter(item => item !== todoText).join('|');
+	document.cookie = updatedCookies;
 }
 
 function showCookies() {
- // const output = document.getElementById('ft_list')
-	saver = document.cookie.split(";")[0];
-	if (saver != "null" || saver != "," || saver != "")
-	{
-	  var phin = saver.split("|");
-	  sad = 0;
-	  while (sad < phin.length)
-		{
-			if (phin[sad] != "" || phin[sad] != "," || phin[sad] != "null")
-			{
-				let btn = document.createElement("button");
-				btn.innerHTML = phin[sad];
-				btn.type = "submit";
-				btn.id = phin[sad];
-				btn.onclick = function () {
-					console.log(btn.id + " removed");
-					document.cookie = saver.toString().replace(btn.id, "");
-					btn.remove();
-					console.log(document.cookie);
-				}
-				document.body.appendChild(btn);
-				var lineBreak = document.createElement("br");
-				btn.after(lineBreak);
-				
-				sad = sad + 1;
+	const saver = document.cookie.split(";")[0];
+	if (saver) {
+		const todos = saver.split("|");
+		todos.forEach(todo => {
+			if (todo) {
+				addTodoToDOM(todo);
 			}
-		}
+		});
 	}
 }
 
-function lst() {
-  const output = document.getElementById('ft_list')
-  output.textContent = document.cookie;
-}
-
-function purge()
-{
-	document.cookie = null;
-}
+window.onload = function () {
+	showCookies();
+};
