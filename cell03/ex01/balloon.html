@@ -47,17 +47,19 @@
                 document.getElementById("Cir").style.height = current + "px";
                 document.getElementById("Cir").style.width = current + "px";
 				shuffle_foward();
-				document.getElementById("Cir").style.backgroundColor = brute[0];
             } else {
                 current = 200;
                 document.getElementById("Cir").style.height = current + "px";
                 document.getElementById("Cir").style.width = current + "px";
-                document.getElementById("Cir").style.backgroundColor = "red";
+				brute = ["red", "green", "blue"];
+
                 Rvar -= 1;
                 if (Rvar == 0) {
                     document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
                 }
             }
+			document.getElementById("Cir").style.backgroundColor = brute[0];
+
         }
 	</script>
 </html>
