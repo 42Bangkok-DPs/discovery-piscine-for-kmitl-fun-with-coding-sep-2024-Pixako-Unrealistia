@@ -15,42 +15,49 @@
 </style>
 
 <div style="text-align:center">
-  <span class="circle" id ="Cir" onclick="composite()" onmouseleave="decomp()"></span>
+  <span class="circle" id ="Cir" onclick="clicked()" onmouseleave="left()"></span>
 </div>
 
 	<script>
-		varri = 200;
-		Rvar = 5;
-		brute = ["green","blue","red"];
-		
-		function decomp(){
-			if (varri >= 200) {
-				varri -= 5;
-				document.getElementById("Cir").style.height = varri + "px";
-				document.getElementById("Cir").style.width = varri + "px";
-			}
+        var current = 200;
+        var Rvar = 5;
+        var brute = ["red", "green", "blue"];
+
+		function shuffle_foward() {
+			brute.push(brute.shift());
 		}
-		
-		function composite(){
-				
-				if (varri <= 420) {
-				varri += 10;
-				document.getElementById("Cir").style.height = varri + "px";
-				document.getElementById("Cir").style.width = varri + "px";
-				document.getElementById("Cir").style.backgroundColor = brute[varri%3];
-				}
-				else
-				{
-					varri = 200;
-					document.getElementById("Cir").style.height = varri + "px";
-					document.getElementById("Cir").style.width = varri + "px";
-					document.getElementById("Cir").style.backgroundColor = "red";
-					Rvar = Rvar - 1;
-					if (Rvar == 0)
-					{
-						document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-					}
-				}
+
+		function shuffle_backward() {
+			brute.unshift(brute.pop());
 		}
+        
+        function left() {
+            if (current > 200) {
+                current -= 5;
+                document.getElementById("Cir").style.height = current + "px";
+                document.getElementById("Cir").style.width = current + "px";
+				shuffle_backward();
+				document.getElementById("Cir").style.backgroundColor = brute[0];
+            }
+        }
+        
+        function clicked() {
+            if (current < 420) {
+                current += 10;
+                document.getElementById("Cir").style.height = current + "px";
+                document.getElementById("Cir").style.width = current + "px";
+				shuffle_foward();
+				document.getElementById("Cir").style.backgroundColor = brute[0];
+            } else {
+                current = 200;
+                document.getElementById("Cir").style.height = current + "px";
+                document.getElementById("Cir").style.width = current + "px";
+                document.getElementById("Cir").style.backgroundColor = "red";
+                Rvar -= 1;
+                if (Rvar == 0) {
+                    document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                }
+            }
+        }
 	</script>
 </html>
