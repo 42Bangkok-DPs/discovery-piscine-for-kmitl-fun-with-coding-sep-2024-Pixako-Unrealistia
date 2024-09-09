@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="backgroound.css">
+</head>
+<body>
+
+	<a onclick="prepareForRick()" class="button">Click me</a>
+
+	<script>
+		a = 0;
+		function prepareForRick() {
+			document.body.style.background = '#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0');
+			a = a + 1;
+			if (a == 20)
+			{
+				document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+			}
+		}    
+	</script> 
+
+</body>
+</html>
