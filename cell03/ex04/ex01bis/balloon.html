@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	</head>
+<style>
+	.circle {
+	height: 200px;
+	width:200px;
+	background-color: red;
+	border-radius: 50%;
+	display: inline-block;
+	}
+	
+</style>
+
+<div style="text-align:center">
+<span class="circle" id ="Cir"></span>
+</div>
+
+	<script>
+		var current = 200;
+		var Rvar = 5;
+		var brute = ["red", "green", "blue"];
+
+		function shuffle_foward() {
+			brute.push(brute.shift());
+		}
+
+		function shuffle_backward() {
+			brute.unshift(brute.pop());
+		}
+		
+		function left() {
+			if (current > 200) {
+				current -= 5;
+				$("#Cir").css({"height": current + "px", "width": current + "px"});
+				shuffle_backward();
+				$("#Cir").css("background-color", brute[0]);
+			}
+		}
+		
+		function clicked() {
+			if (current < 420) {
+				current += 10;
+				$("#Cir").css({"height": current + "px", "width": current + "px"});
+				shuffle_foward();
+			} else {
+				current = 200;
+				$("#Cir").css({"height": current + "px", "width": current + "px"});
+				brute = ["red", "green", "blue"];
+
+				Rvar -= 1;
+				if (Rvar == 0) {
+					document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+				}
+			}
+			$("#Cir").css("background-color", brute[0]);
+		}
+
+		$(document).ready(function() {
+			$("#Cir").on("click", clicked);
+			$("#Cir").on("mouseleave", left);
+		});
+	</script>
+</html>

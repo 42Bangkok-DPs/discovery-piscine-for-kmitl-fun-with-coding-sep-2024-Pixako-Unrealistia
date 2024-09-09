@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="calcForm">
+        <label for="fname">First Value:</label>
+        <input type="number" id="fval" step="1"><br><br>
+        <label for="lname">Second Value:</label>
+        <input type="number" id="sval" step="1"><br><br>
+
+        <input type="radio" name="operation" value="Plus">Plus<br>
+        <input type="radio" name="operation" value="Minus">Minus<br>
+        <input type="radio" name="operation" value="Multiply">Multiply<br>
+        <input type="radio" name="operation" value="Divide">Divide<br>
+        <input type="radio" name="operation" value="Modulo">Modulo<br><br>
+
+        <input type="submit" value="Try me">
+    </form>
+
+    <script>
+        var outBuf = 0;
+		var fval = 0;
+		var sval = 0;
+
+        function sanitizeInput(value) {
+            let num = parseInt(value, 10);
+            if (isNaN(num) || !isFinite(num) || !(num >= 0)) {
+                throw new Error("Invalid input");
+            }
+            return num;
+        }
+
+        function compose(operand) {
+            try {
+                fval = sanitizeInput($('#fval').val());
+                sval = sanitizeInput($('#sval').val());
+            }
+            catch (e) {
+                outBuf = "Error :(";
+                return;
+            }
+
+            switch (operand) {
+                case "Plus":
+                    outBuf = fval + sval;
+                    break;
+                case "Minus":
+                    outBuf = fval - sval;
+                    break;
+                case "Multiply":
+                    outBuf = fval * sval;
+                    break;
+                case "Divide":
+                    if (sval === 0) {
+                        outBuf = "It's over 9000!";
+                    } else {
+                        outBuf = fval / sval;
+                    }
+                    break;
+                case "Modulo":
+                    if (sval === 0) {
+                        outBuf = "It's over 9000!";
+                    } else {
+                        outBuf = fval % sval;
+                    }
+                    break;
+            }
+        }
+
+        $(document).ready(function () {
+            $('#calcForm').on('submit', function (event) {
+                event.preventDefault();
+                let selectedOperation = $('input[name="operation"]:checked').val();
+                if (selectedOperation) {
+                    compose(selectedOperation);
+                    console.log(outBuf);
+                    alert(outBuf);
+                } else {
+                    alert("Please select an operation.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
