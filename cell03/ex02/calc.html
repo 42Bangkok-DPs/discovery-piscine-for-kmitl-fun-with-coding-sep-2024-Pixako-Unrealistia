@@ -28,8 +28,7 @@
 
 		function sanitizeInput(value) {
 		let num = parseFloat(value);
-		if (isNaN(num) || !isFinite(num) || !(num > 0)) {
-			alert("Invalid input: " + value);
+		if (isNaN(num) || !isFinite(num) || !(num >= 0)) {
 			throw new Error("Invalid input");
 		}
 		return num;
