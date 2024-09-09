@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		html, body {
+			height: 100%;
+			width: 100%;
+		}
+
+		.praisebetow3school {
+			display: flex;
+			flex-direction: row;
+			font-size: 30px;
+			text-align: center;
+			height: 100%;
+			width: 100%;
+		}
+
+		.a, .b {
+			background-color: #fcd4d4;
+			padding: 20px;
+			flex: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.b {
+			background-color: #ccd4d4;
+		}
+
+		@media (max-width: 800px) {
+			.praisebetow3school {
+				flex-direction: column;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="praisebetow3school">
+		<div class="a">เอกเซลล์</div>
+		<div class="b">ทวิเซลล์</div>
+	</div>
+</body>
+</html>
