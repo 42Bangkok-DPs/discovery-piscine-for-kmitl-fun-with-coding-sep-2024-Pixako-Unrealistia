@@ -1,8 +1,14 @@
 function sanitizeInput(input) {
 	const element = $('<div>').text(input);
-	if (element.html() !== element.text()) {
+	console.log(element.text());
+	console.log("test");
+	if (element.html() !== element.text() || element.text().includes('|') || element.text().includes(';')) {
 		throw new Error('Invalid input');
 	}
+
+
+
+
 	return element.html();
 }
 
