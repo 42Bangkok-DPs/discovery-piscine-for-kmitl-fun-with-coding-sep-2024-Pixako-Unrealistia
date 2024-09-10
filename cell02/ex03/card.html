@@ -7,49 +7,102 @@
 
 <body>
 <table class="center">
-	<div class="Txt">
-		<b>User Profile Card</b>
-	</div>
-	<center><img src="https://avatars.githubusercontent.com/u/62527607?v=4">
+	<center>
+    <div class="Txt">
+        <b>User Profile Card</b>
+    </div>
+    <img src="https://avatars.githubusercontent.com/u/62527607?v=4">
+
+    <div class="Txt">
+        <small><b>sorchong 42</small></b>
+    </div>
+	<h1>
+    Level 79 Nail clipper
+	</h1>
+	<h2>42Bangkok</h2>
 	</center>
-	<div class="Txt">
-		<small><b>sorchong 42</small></b>
-	</div>
-	<center>Level 19 Nail clipper</center>
-	<tr>
-		<td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Twitter-logo.svg/934px-Twitter-logo.svg.png" alt="1" style="width:50px;height:50px;" /></td>
-		<td><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png?w=360" alt="1" style="width:50px;height:50px;" /></td>
-		<td><img src="https://brandlogos.net/wp-content/uploads/2021/11/discord-logo.png" alt="1" style="width:50px;height:50px;" /></td>
-		
-	</tr>
-
-	
-
+    <tr>
+        <td>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png?w=360" alt="1" style="width:50px;height:50px;"/>
+            </a>
+        </td>
+        <td>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                <img src="https://brandlogos.net/wp-content/uploads/2021/11/discord-logo.png" alt="1" style="width:50px;height:50px;"/>
+            </a>
+        </td>
+    </tr>
 </table>
 
+<center><a onclick="gfg_Run()" class="button">Contact me</a></center>
 
-	<center><a onclick="gfg_Run()" class="button">Click me</a></center>
-
-	<script>
-		function changeColor(color) {
-			document.body.style.background = color;
+<script>
+	//when the button is clicked open the contact form
+	var on = false;
+	 function gfg_Run() {
+		
+		if (on == false){
+			on = true;
 		}
-		a = 0;
-		function gfg_Run() {
-			changeColor('#'+(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0'));
-			a = a + 1;
-			switch(a){
-				case 8:
-					alert("R u sure about dat?");
-					break;
-				case 10:
-					document.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-					break;
-			}
-		}         
-	</script> 
+		else{
+			on = false;
+			var form = document.getElementById("contact-form");
+			form.remove();
+			
+			return ;
+		}
+
+		var form = document.createElement("form");
+		form.setAttribute("method", "post");
+		form.setAttribute("action", "https://formspree.io/f/meqnyvbn");
+		form.setAttribute("id", "contact-form");
+		form.setAttribute("class", "tmp");
+
+		var email = document.createElement("input");
+		email.setAttribute("type", "email");
+		email.setAttribute("name", "_replyto");
+		email.setAttribute("placeholder", "Your email");
+		email.setAttribute("class", "tmp");
+		email.setAttribute("required", "true");
+
+		var message = document.createElement("textarea");
+		message.setAttribute("name", "message");
+		message.setAttribute("placeholder", "Your message");
+		message.setAttribute("class", "tmp");
+		message.setAttribute("required", "true");
+
+		var button = document.createElement("button");
+		button.setAttribute("type", "submit");
+		button.setAttribute("class", "tmp");
+		button.innerHTML = "Send";
+
+		form.appendChild(email);
+		form.appendChild(message);
+		form.appendChild(button);
+
+		document.body.appendChild(form);
+		form.scrollIntoView({ behavior: 'smooth' });
+	 }	
+
+
+//	<div class="img2">
+//  <div class="lesser">
+//  <span class="border" id ="contact">Contact me</span>
+  
+//	<div id="contact-form">
+//		<form method="POST" action="https://formspree.io/f/meqnyvbn">
+//			<input type="hidden" name="_subject" value="Contact request from personal website" />
+//			<input type="email" name="_replyto" placeholder="Your email" class ="tmp" required>
+//			<textarea name="message" placeholder="Your message" class ="tmp" required></textarea>
+//			<button onclick="termsanagreement()" type="submit" class ="tmp">Send</button>
+//		</form>
+//	</div>
+//</div>
+
+
+</script>
 
 
 </body>
-
 </html>

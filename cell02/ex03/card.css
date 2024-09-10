@@ -1,28 +1,118 @@
 table, th, td {
-	padding-left: 30px;
-	padding-top: 10px;
-	padding-right: 30px;
-  border-collapse: collapse;
-  
+	padding: 10px 30px;
+	border-collapse: collapse;
+	border: 1px solid #ddd;
 }
 
 table.center {
-  margin-left: auto; 
-  margin-right: auto;
+	margin-left: auto; 
+	margin-right: auto;
+	width: 80%;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .Txt {
-	font-size: 48px;
+	font-size: 36px;
 	text-align: center;
+	color: #333;
+	margin-bottom: 20px;
 }
 
 .button {
-  background-color: #232C7A;
-  color: white;
-  border: dotted;
-  padding-left: 200px;
-  padding-right: 200px;
-  font-size: 16px;
-  position: center;
-  display: inline-block;
+	background-color: #232C7A;
+	color: white;
+	border: none;
+	padding: 15px 30px;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 20px auto;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+}
+
+.button:hover {
+	background-color: #1a1f5a;
+}
+
+img {
+	border-radius: 50%;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	width: 20%;
+	height: 20%;
+
+}
+
+/* Table cell styling */
+td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+@media (max-width: 768px) {
+	.Txt {
+		font-size: 24px;
+	}
+
+	.button {
+		padding: 10px 20px;
+		font-size: 14px;
+	}
+
+	table, th, td {
+		padding: 5px 15px;
+	}
+}
+
+
+form#contact-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+form#contact-form input[type="email"],
+form#contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+form#contact-form button {
+    background-color: #232C7A;
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+form#contact-form button:hover {
+    background-color: #1a1f5a;
+}
+
+form#contact-form input::placeholder,
+form#contact-form textarea::placeholder {
+    color: #aaa;
 }
