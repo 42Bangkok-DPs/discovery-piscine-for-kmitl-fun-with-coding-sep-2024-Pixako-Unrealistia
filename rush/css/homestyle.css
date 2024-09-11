@@ -1,0 +1,256 @@
+
+/* animation stuffs */ 
+
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #ffffff, #cdf3ff);
+    color: #333;
+    overflow: hidden;
+    position: relative;
+}
+
+body::before, body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, rgba(255,182,193,0.1) 25%, transparent 25%, transparent 50%, rgba(255,182,193,0.1) 50%, rgba(255,182,193,0.1) 75%, transparent 75%, transparent);
+    background-size: 100% 100%;
+    background-position: 0 0;
+    animation: moveBackground 10s linear infinite;
+    z-index: 0; /* Ensure visibility */
+}
+
+body::after {
+    animation: moveBackground 15s linear infinite;
+}
+
+.footer {
+	/* always position this at the bottom of the page */
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+    width: 200%;
+    text-align: center;
+    animation: copyRightLoop 15s linear infinite;
+    z-index: 1;
+}
+
+@keyframes copyRightLoop {
+	0%, 100% {
+		transform: translateX(0);
+	}
+	50% {
+		transform: translateX(-100%);
+	}
+}
+
+
+@keyframes moveBackground {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Night mode styles */
+body.night-mode {
+	background: linear-gradient(to right, #2c3e50, #4c5c68);
+	color: #ecf0f1;
+}
+
+body.night-mode::before, body.night-mode::after {
+	background: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+}
+
+.header h1.night-mode {
+	color: #ecf0f1;
+}
+
+.links a.night-mode {
+	color: #ecf0f1;
+	border: 2px solid #2980b9;
+}
+
+.links a.night-mode:hover {
+	background: #2980b9;
+	color: #fff;
+}
+
+.links a.night-mode::after {
+	background: #34495e;
+	color: #ecf0f1;
+}
+
+/* end of palette stuffs */
+
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.header {
+	text-align: center;
+	padding: 50px 0;
+}
+
+.header h1 {
+	font-size: 3em;
+	color: #333;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+	animation: fadeIn 2s ease-in-out;
+}
+
+.content {
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.content p {
+	font-size: 1.2em;
+	line-height: 1.6;
+	animation: fadeIn 2s ease-in-out;
+}
+
+.links {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 20px;
+	position: relative;
+}
+
+.links a {
+	text-decoration: none;
+	color: #230202;
+	font-weight: bold;
+	padding: 10px 20px;
+	border: 2px solid #000000;
+	border-radius: 5px;
+	transition: all 0.6s ease;
+	animation: slideIn 1.5s ease-in-out;
+	position: relative;
+}
+
+.links a:hover {
+	background: #00b7ff;
+	color: #fff;
+}
+
+.links a::after {
+	content: attr(data-description);
+	display: block;
+	opacity: 0;
+	visibility: hidden;
+	background: #fff;
+	color: #333;
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: max-content;
+	max-width: 200px;
+	text-align: center;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.links a:hover::after {
+	opacity: 1;
+	visibility: visible;
+}
+
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header h1, .links a {
+    transition: color 0.3s;
+}
+
+#night-mode-toggle:checked ~ .container {
+    background-color: #333;
+    color: #fff;
+}
+
+#night-mode-toggle:checked ~ .container .header h1,
+#night-mode-toggle:checked ~ .container .links a {
+    color: #fff;
+}
+
+#night-mode-toggle:checked ~ .container .links a {
+    color: #ddd;
+}
+
+.toggle-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive stuffs */
+
+@media (max-width: 768px) {
+	.links {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.links a {
+		margin-bottom: 10px;
+	}
+
+	.links a::after {
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes slideIn {
+	from {
+		opacity: 0;
+		transform: translateX(-20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@media (max-width: 768px) {
+	button {
+		bottom: 10px;
+		right: 10px;
+		padding: 8px 16px;
+	}
+}
