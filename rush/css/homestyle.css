@@ -30,7 +30,6 @@ body::after {
 }
 
 .footer {
-	/* always position this at the bottom of the page */
 	position: fixed;
 	bottom: 0;
 	left: 50%;
@@ -128,83 +127,66 @@ body.night-mode::before, body.night-mode::after {
 }
 
 .links a {
-	text-decoration: none;
-	color: #230202;
-	font-weight: bold;
-	padding: 10px 20px;
-	border: 2px solid #000000;
-	border-radius: 5px;
-	transition: all 0.6s ease;
-	animation: slideIn 1.5s ease-in-out;
-	position: relative;
-}
-
-.links a:hover {
-	background: #00b7ff;
-	color: #fff;
+    text-decoration: none;
+    color: #230202;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    transition: all 0.6s ease;
+    animation: slideIn 1.5s ease-in-out;
+    position: relative;
+    z-index: 1; /* Ensure that this is above below */
 }
 
 .links a::after {
-	content: attr(data-description);
-	display: block;
-	opacity: 0;
-	visibility: hidden;
-	background: #fff;
-	color: #333;
-	padding: 10px;
-	border-radius: 5px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	position: absolute;
-	top: 100%;
-	left: 50%;
-	transform: translateX(-50%);
-	width: max-content;
-	max-width: 200px;
-	text-align: center;
-	transition: opacity 0.3s ease, visibility 0.3s ease;
+    content: attr(data-description);
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff;
+    color: #333;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 200px;
+    text-align: center;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 0;
+    pointer-events: none; /* Sometimes pseudo ele makes the 'button' unclickable this solves that */
 }
 
 .links a:hover::after {
-	opacity: 1;
-	visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 
-body {
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.header h1, .links a {
-    transition: color 0.3s;
-}
-
-#night-mode-toggle:checked ~ .container {
-    background-color: #333;
+.links a:hover {
+    background: #00b7ff;
     color: #fff;
 }
 
-#night-mode-toggle:checked ~ .container .header h1,
-#night-mode-toggle:checked ~ .container .links a {
-    color: #fff;
+button {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	padding: 10px 20px;
+	background: #3498db;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background 0.3s ease;
+	z-index: 1000;
 }
 
-#night-mode-toggle:checked ~ .container .links a {
-    color: #ddd;
-}
-
-.toggle-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.toggle-button:hover {
-    background-color: #0056b3;
+button:hover {
+	background: #2980b9;
 }
 
 /* Responsive stuffs */
@@ -254,3 +236,35 @@ body {
 		padding: 8px 16px;
 	}
 }
+
+
+/* You know the rules */
+.container {
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../resources/astley.gif') no-repeat center center;
+    background-size: cover;
+    opacity: 0;
+    animation: fadeInBackground 100s forwards;
+    z-index: -1;
+}
+
+@keyframes fadeInBackground {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+/* and so do I */

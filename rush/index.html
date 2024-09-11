@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="./css/homestyle.css">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
+	<link rel="stylesheet" href="./css/homestyle.css">
+	<script>
+		function toggleNightMode() {
+			document.body.classList.toggle('night-mode');
+			document.querySelector('.header h1').classList.toggle('night-mode');
+			document.querySelectorAll('.links a').forEach(link => {
+				link.classList.toggle('night-mode');
+			});
+			localStorage.setItem('nightMode', document.body.classList.contains('night-mode'));
+		}
+		window.onload = function() {
+			if (localStorage.getItem('nightMode') === 'true') {
+				toggleNightMode();
+			}
+		}
+	</script>
 </head>
 <body>
-    <input type="checkbox" id="night-mode-toggle" hidden>
-    <div class="container">
-        <div class="header">
-            <h1>Welcome</h1>
-        </div>
-        <div class="content">
-            <center>
-                <p>Select where you wish to go</p>
-            </center>
-            <div class="links">
-                <a href="site1.html" data-description="Can do anything, expert at none.">sorchong's</a>
-                <a href="site2.html" data-description="Some sub texts (add MEEE!!!!)">kkhaokum's</a>
-            </div>
-        </div>
-        <label for="night-mode-toggle" class="toggle-button">Toggle Night Mode</label>
-    </div>
-    <div class="footer">
-        <p>© sorchong-kkhaokum 2024</p>
-    </div>
+	<div class="container">
+		<div class="header">
+			<h1>Welcome</h1>
+		</div>
+		<div class="content">
+			<center>
+				<p>Select where you wish to go</p>
+			</center>
+			<div class="links">
+				<a href="site1.html" data-description="Can do anything, expert at none." class="navt">sorchong's</a>
+				<a href="site2.html" data-description="Some sub texts (add MEEE!!!!)" class="navt">kkhaokum's</a>
+			</div>
+
+			
+		</div>
+		<button onclick="toggleNightMode()" id="nightmodebutton">Toggle Night Mode</button>
+	</div>
+
+	<div class="footer">
+		<p>© sorchong-kkhaokum 2024</p>
+	</div>
 </body>
 </html>
