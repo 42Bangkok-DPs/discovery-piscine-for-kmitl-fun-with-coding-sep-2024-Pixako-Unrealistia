@@ -282,33 +282,37 @@ footer {
 }
 
 @media (max-width: 768px) {
-	nav ul {
-		flex-direction: column;
-	}
+    nav ul {
+        flex-direction: column;
+    }
 
-	nav ul li {
-		margin: 0.5em 0;
-	}
+    nav ul li {
+        margin: 0.5em 0;
+    }
 
-	header h1 {
-		font-size: 2em;
-	}
+    header h1 {
+        font-size: 2em;
+    }
 
-	section h2 {
-		font-size: 1.5em;
-	}
+    section h2 {
+        font-size: 1.5em;
+    }
 
-	section p {
-		font-size: 1em;
-	}
+    section p {
+        font-size: 1em;
+    }
 
-	#contact ul {
-		flex-direction: column;
-	}
+    #contact ul {
+        flex-direction: column;
+    }
 
-	#contact ul li {
-		margin: 0.5em 0;
-	}
+    #contact ul li {
+        margin: 0.5em 0;
+    }
+
+    body, main {
+        padding-top: 3em;
+    }
 }
 
 .overlay {
