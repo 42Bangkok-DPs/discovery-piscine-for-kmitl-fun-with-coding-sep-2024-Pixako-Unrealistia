@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Portfolio - Sorchong</title>
+	<link rel="stylesheet" href="../css/sorchong.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+	<nav>
+		<ul>
+			<li><a href="../index.html">Home</a></li>
+			<li><a href="#about">About</a></li>
+			<li><a href="#showcase">Showcase</a></li>
+			<li><a href="#skills">Skills</a></li>
+			<li><a href="#contact">Contact</a></li>
+		</ul>
+	</nav>
+	<header>
+		<h1>Welcome to My Portfolio</h1>
+	</header>
+	<main>
+		<section id="about">
+			<h2>About Me</h2>
+			<img src="https://avatars.githubusercontent.com/u/62527607?v=4" alt="Your Name">
+			<p id="about-text">Hello, my name is Nont. I translate and ghostwrite stuff... And programming too I guess.</p>
+		</section>
+		<section id="showcase">
+			<h2>Showcase</h2>
+			<div class="carousel">
+				<button class="carousel-button left" onclick="prevSlide()">&#10094;</button>
+				<div class="carousel-slides">
+					<div class="carousel-slide">
+						<a href="https://example.com/SPMM"><img src="../resources/1.png" alt="Supermeowmeow"></a>
+						<p>Contributed greatly in this project, tea shop keeping game written in ARM assemebly to be run on raspberry pi</p>
+					</div>
+					<div class="carousel-slide">
+						<a href="https://example.com/SMH"><img src="../resources/2.png" alt="SmartMeter"></a>
+						<p>Full implementation and deployment of smart meter hub system, utilising microservice architecture. Express security, adaptability, reachability and recoverability.
+
+							The system is capable of remotely turning on off, collect and summarise sensorial readings.
+							
+							Featuring web bassd application for administrator and web application for client</p>
+					</div>
+					<div class="carousel-slide">
+						<a href="https://example.com/LMS"><img src="../resources/3.png" alt="SmartMeter"></a>
+						<p>This project is an electronic locker control system implemented in Python in both hardware and software that enables secure and convenient access to the lockers. The fully functional demonstration piece relies on facial recognition for user authentication, after which they would be granted access to their respective locker, additionally, the manager of said locker can view the inside of the locker remotely, the system runs regular checks on the locker. The entire system is designed to be scalable, modular, and user-friendly</p>
+					</div>
+					<div class="carousel-slide">
+						<p>Many more! Interested? Find out yourself!</p>
+					</div>
+				</div>
+				<button class="carousel-button right" onclick="nextSlide()">&#10095;</button>
+			</div>
+		</section>
+		<section id="skills">
+			<h2>Programming Skills</h2>
+			<div class="skills-categories">
+				<button onclick="showCategory('low')">Low</button>
+				<button onclick="showCategory('high')">High</button>
+				<button onclick="showCategory('stacks')">Stacks</button>
+			</div>
+			<div id="skills-content">
+				<div class="skills-category" id="low">
+					<ul>
+						<li>Rust <span class="rating" data-rating="9"></span></li>
+						<li>C <span class="rating" data-rating="7"></span></li>
+						<li>C++ <span class="rating" data-rating="6"></span></li>
+						<li>ARM ASM <span class="rating" data-rating="5"></span></li>
+					</ul>
+				</div>
+				<div class="skills-category" id="high">
+					<ul>
+						<li>Python <span class="rating" data-rating="10"></span></li>
+						<li>R <span class="rating" data-rating="10"></span></li>
+						<li>Prolog <span class="rating" data-rating="10"></span></li>
+						<li>Java <span class="rating" data-rating="10"></span></li>
+						<li>Ruby <span class="rating" data-rating="5"></span></li>
+						<li>VB <span class="rating" data-rating="2"></span></li>
+						<li>Fortran <span class="rating" data-rating="1"></span></li>
+						<li>Javascript <span class="rating" data-rating="0"></span></li>
+					</ul>
+				</div>
+				<div class="skills-category" id="stacks">
+					<ul>
+						<li>Odoo <span class="expertise">Expert</span></li>
+						<li>PERN <span class="expertise">Somewhat Good</span></li>
+						<li>Software Architecture Design <span class="expertise"><a href="#" id="trust-me-bro">Expert (Trust me bro)</a></span></li>
+					</ul>
+				</div>
+			</div>
+		</section>
+		<section id="game-overlay" class="overlay" style="display: none;">
+			<div class="overlay-content">
+				<canvas id="gameCanvas" width="480" height="320" style="border:1px solid #000000;"></canvas>
+				<p>Score: <span id="score">0</span></p>
+				<p>High Score: <span id="highscore">0</span></p>
+				<button onclick="closeGame()">Close Game</button>
+			</div>
+		</section>
+		<section id="new-section" style="display: none;">
+			<h2>Congratulations!</h2>
+			<p>Thank you for playing the game (Pretty well too) Is there anything special or hidden?
+				No. but there is
+				<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" id="servicesu">something</a> special for you.
+			</p>
+		</section>
+		<section id="contact">
+			<h2>Contact</h2>
+			<ul>
+				<li><a href="https://github.com/Pixako-Unrealistia"><i class="fab fa-github"></i> GitHub</a></li>
+				<li><a href="https://www.linkedin.com/in/schongte/"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+				<li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ&themeRefresh=1"><i class="fab fa-instagram"></i> Instagram</a></li>
+			</ul>
+		</section>
+		<center><a onclick="gfg_Run()" class="button">Contact me</a></center>
+	</main>
+	<footer>
+		<p>&copy; 2024 Sorchong. All rights reserved.</p>
+	</footer>
+
+	<script>
+		var on = false;
+		window.onload = function() {
+			if (parseInt(localStorage.getItem('highscore')) > 10) {
+				document.getElementById('new-section').style.display = 'block';
+			}
+		}
+
+		function gfg_Run() {
+			if (on == false){
+				on = true;
+			} else {
+				on = false;
+				var form = document.getElementById("contact-form");
+				form.remove();
+				return;
+			}
+
+			var form = document.createElement("form");
+			form.setAttribute("method", "post");
+			form.setAttribute("action", "https://formspree.io/f/meqnyvbn");
+			form.setAttribute("id", "contact-form");
+			form.setAttribute("class", "tmp");
+
+			var email = document.createElement("input");
+			email.setAttribute("type", "email");
+			email.setAttribute("name", "_replyto");
+			email.setAttribute("placeholder", "Your email");
+			email.setAttribute("class", "tmp");
+			email.setAttribute("required", "true");
+
+			var message = document.createElement("textarea");
+			message.setAttribute("name", "message");
+			message.setAttribute("placeholder", "Your message");
+			message.setAttribute("class", "tmp");
+			message.setAttribute("required", "true");
+
+			var button = document.createElement("button");
+			button.setAttribute("type", "submit");
+			button.setAttribute("class", "tmp");
+			button.innerHTML = "Send";
+
+			form.appendChild(email);
+			form.appendChild(message);
+			form.appendChild(button);
+
+			document.body.appendChild(form);
+			form.scrollIntoView({ behavior: 'smooth' });
+		}
+
+		let currentSlide = 0;
+		const slides = document.querySelectorAll('.carousel-slide');
+		const totalSlides = slides.length;
+		let interval;
+
+		function showSlide(index) {
+			clearInterval(interval);
+			slides.forEach((slide, i) => {
+				slide.style.display = i === index ? 'block' : 'none';
+			});
+			interval = setInterval(nextSlide, 10000);
+		}
+
+		function nextSlide() {
+			currentSlide = (currentSlide + 1) % totalSlides;
+			showSlide(currentSlide);
+		}
+
+		function prevSlide() {
+			currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+			showSlide(currentSlide);
+		}
+
+		interval = setInterval(nextSlide, 10000);
+		showSlide(currentSlide);
+
+		let clickCount = 0;
+		const maxClicks = 3;
+		const aboutText = document.getElementById('about-text');
+		const details = ["I do free fortune telling occasionally", "Hey stop clicking", "Stop clicking!"];
+
+		aboutText.addEventListener('click', () => {
+			if (clickCount < maxClicks) {
+				const moreDetails = document.createElement('p');
+				moreDetails.textContent = details[clickCount];
+				aboutText.appendChild(moreDetails);
+				clickCount++;
+			} else {
+				spawnDuck();
+			}
+		});
+
+		function spawnDuck() {
+			const duck = document.createElement('div');
+			duck.classList.add('duck');
+			document.body.appendChild(duck);
+
+			const duration = Math.random() * 5 + 5; // Between 5 and 10 seconds
+			const delay = Math.random() * 5;
+			duck.style.animationDuration = `${duration}s`;
+			duck.style.animationDelay = `${delay}s`;
+		}
+
+		function showCategory(category) {
+			const categories = document.querySelectorAll('.skills-category');
+			categories.forEach(cat => {
+				cat.style.display = cat.id === category ? 'block' : 'none';
+			});
+		}
+
+		showCategory('low');
+
+		document.querySelectorAll('.rating').forEach(rating => {
+			const ratingValue = rating.getAttribute('data-rating');
+			rating.innerHTML = '★'.repeat(ratingValue) + '☆'.repeat(10 - ratingValue);
+		});
+
+		document.getElementById('trust-me-bro').addEventListener('click', function() {
+			document.getElementById('game-overlay').style.display = 'flex';
+			startGame();
+		});
+
+		function closeGame() {
+			document.getElementById('game-overlay').style.display = 'none';
+			document.location.reload();
+		}
+
+		let score = 0;
+		let highScore = parseInt(localStorage.getItem('highscore')) || 0;
+		document.getElementById('highscore').textContent = highScore;
+		const canvas = document.getElementById("gameCanvas");
+		const ctx = canvas.getContext("2d");
+		let ballRadius = 10;
+		let x = canvas.width / 2;
+		let y = canvas.height - 30;
+		let dx = 2;
+		let dy = -2;
+		let paddleHeight = 10;
+		let paddleWidth = 75;
+		let paddleX = (canvas.width - paddleWidth) / 2;
+		let rightPressed = false;
+		let leftPressed = false;
+
+		document.addEventListener("keydown", keyDownHandler, false);
+		document.addEventListener("keyup", keyUpHandler, false);
+
+		var ballColor = "#0095DD";
+
+		function keyDownHandler(e) {
+			if (e.key == "Right" || e.key == "ArrowRight") {
+				rightPressed = true;
+			} else if (e.key == "Left" || e.key == "ArrowLeft") {
+				leftPressed = true;
+			}
+		}
+
+		function keyUpHandler(e) {
+			if (e.key == "Right" || e.key == "ArrowRight") {
+				rightPressed = false;
+			} else if (e.key == "Left" || e.key == "ArrowLeft") {
+				leftPressed = false;
+			}
+		}
+
+		function drawBall() {
+			ctx.beginPath();
+			ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+			ctx.fillStyle = ballColor;
+			ctx.fill();
+			ctx.closePath();
+		}
+
+		function drawPaddle() {
+			ctx.beginPath();
+			ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+			ctx.fillStyle = "#0095DD";
+			ctx.fill();
+			ctx.closePath();
+		}
+
+		function drawScore() {
+			document.getElementById('score').textContent = score;
+			document.getElementById('highscore').textContent = highScore;
+		}
+
+		function draw() {
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+			drawBall();
+			drawPaddle();
+			drawScore();
+
+			if (x + dx > canvas.width - ballRadius || x + dx < ballRadius) {
+				dx = -dx;
+			}
+			if (y + dy < ballRadius) {
+				dy = -dy;
+			} else if (y + dy > canvas.height - ballRadius) {
+				if (x > paddleX && x < paddleX + paddleWidth) {
+					dy = -dy;
+					score++;
+					ballColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+					if (score > highScore) {
+						highScore = score;
+						localStorage.setItem('highscore', highScore);
+					}
+				} else {
+					document.location.reload();
+				}
+			}
+
+			if (rightPressed && paddleX < canvas.width - paddleWidth) {
+				paddleX += 7;
+			} else if (leftPressed && paddleX > 0) {
+				paddleX -= 7;
+			}
+
+			x += dx;
+			y += dy;
+		}
+
+		function startGame() {
+			score = 0;
+			highScore = parseInt(localStorage.getItem('highscore')) || 0;
+			draw();
+			setInterval(draw, 10);
+		}
+
+		document.getElementById('servicesu').addEventListener('mouseover', function() {
+			window.location.href = this.href;
+		});
+	</script>
+</body>
+</html>

@@ -2,41 +2,41 @@
 /* animation stuffs */ 
 
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(to right, #ffffff, #cdf3ff);
-    color: #333;
-    overflow: hidden;
-    position: relative;
+	font-family: 'Arial', sans-serif;
+	margin: 0;
+	padding: 0;
+	background: linear-gradient(to right, #ffffff, #cdf3ff);
+	color: #333;
+	overflow: hidden;
+	position: relative;
 }
 
 body::before, body::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(45deg, rgba(255,182,193,0.1) 25%, transparent 25%, transparent 50%, rgba(255,182,193,0.1) 50%, rgba(255,182,193,0.1) 75%, transparent 75%, transparent);
-    background-size: 100% 100%;
-    background-position: 0 0;
-    animation: moveBackground 10s linear infinite;
-    z-index: 0; /* Ensure visibility */
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 200%;
+	height: 200%;
+	background: linear-gradient(45deg, rgba(255,182,193,0.1) 25%, transparent 25%, transparent 50%, rgba(255,182,193,0.1) 50%, rgba(255,182,193,0.1) 75%, transparent 75%, transparent);
+	background-size: 100% 100%;
+	background-position: 0 0;
+	animation: moveBackground 10s linear infinite;
+	z-index: 0; /* Ensure visibility */
 }
 
 body::after {
-    animation: moveBackground 15s linear infinite;
+	animation: moveBackground 15s linear infinite;
 }
 
 .footer {
-	position: fixed;
+	position: relative;
 	bottom: 0;
 	left: 50%;
-    width: 200%;
-    text-align: center;
-    animation: copyRightLoop 15s linear infinite;
-    z-index: 1;
+	width: 200%;
+	text-align: center;
+	animation: copyRightLoop 15s linear infinite;
+	z-index: 1;
 }
 
 @keyframes copyRightLoop {
@@ -50,12 +50,12 @@ body::after {
 
 
 @keyframes moveBackground {
-    0% {
-        transform: translateX(100%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
 }
 
 /* Night mode styles */
@@ -117,6 +117,7 @@ body.night-mode::before, body.night-mode::after {
 	font-size: 1.2em;
 	line-height: 1.6;
 	animation: fadeIn 2s ease-in-out;
+	text-align: center;
 }
 
 .links {
@@ -127,52 +128,52 @@ body.night-mode::before, body.night-mode::after {
 }
 
 .links a {
-    text-decoration: none;
-    color: #230202;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: 2px solid #000000;
-    border-radius: 5px;
-    transition: all 0.6s ease;
-    animation: slideIn 1.5s ease-in-out;
-    position: relative;
-    z-index: 1; /* Ensure that this is above below */
+	text-decoration: none;
+	color: #230202;
+	font-weight: bold;
+	padding: 10px 20px;
+	border: 2px solid #000000;
+	border-radius: 5px;
+	transition: all 0.6s ease;
+	animation: slideIn 1.5s ease-in-out;
+	position: relative;
+	z-index: 1; /* Ensure that this is above below */
 }
 
 .links a::after {
-    content: attr(data-description);
-    display: block;
-    opacity: 0;
-    visibility: hidden;
-    background: #fff;
-    color: #333;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: max-content;
-    max-width: 200px;
-    text-align: center;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    z-index: 0;
-    pointer-events: none; /* Sometimes pseudo ele makes the 'button' unclickable this solves that */
+	content: attr(data-description);
+	display: block;
+	opacity: 0;
+	visibility: hidden;
+	background: #fff;
+	color: #333;
+	padding: 10px;
+	border-radius: 5px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	transform: translateX(-50%);
+	width: max-content;
+	max-width: 200px;
+	text-align: center;
+	transition: opacity 0.3s ease, visibility 0.3s ease;
+	z-index: 0;
+	pointer-events: none;
 }
 
 .links a:hover::after {
-    opacity: 1;
-    visibility: visible;
+	opacity: 1;
+	visibility: visible;
 }
 
 .links a:hover {
-    background: #00b7ff;
-    color: #fff;
+	background: #00b7ff;
+	color: #fff;
 }
 
 button {
-	position: fixed;
+	position: absolute;
 	bottom: 20px;
 	right: 20px;
 	padding: 10px 20px;
@@ -240,31 +241,36 @@ button:hover {
 
 /* You know the rules */
 .container {
-    position: relative;
-    overflow: hidden;
+	position: relative;
+	overflow: hidden;
 }
 
 .container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('../resources/astley.gif') no-repeat center center;
-    background-size: cover;
-    opacity: 0;
-    animation: fadeInBackground 100s forwards;
-    z-index: -1;
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url('../resources/astley.gif') no-repeat center center;
+	background-size: cover;
+	opacity: 0;
+	animation: fadeInBackground 100s forwards;
+	z-index: -1;
 }
 
 @keyframes fadeInBackground {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 0.5;
-    }
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 0.5;
+	}
 }
 
 /* and so do I */
+
+/* Final solution */
+* {
+	overflow: hidden;
+}

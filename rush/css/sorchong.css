@@ -1,0 +1,365 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f4;
+	color: #333;
+	animation: backgroundTransition 10s infinite alternate;
+}
+
+@keyframes backgroundTransition {
+	0% {
+		background-color: #ffffff;
+	}
+	100% {
+		background-color: #f4f4f4;
+	}
+}
+
+a {
+	color: #333;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+
+nav {
+	background-color: #333;
+	color: #fff;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 1000;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+
+nav ul li {
+	margin: 0 1em;
+}
+
+nav ul li a {
+	color: #fff;
+	padding: 1em;
+	display: block;
+}
+
+
+header {
+	background-color: #333;
+	color: #fff;
+	padding: 4em 0;
+	text-align: center;
+	margin-top: 50px;
+}
+
+header h1 {
+	margin: 0;
+	font-size: 2.5em;
+}
+
+
+main {
+	padding: 2em;
+}
+
+section {
+	margin-bottom: 2em;
+}
+
+section h2 {
+	font-size: 2em;
+	margin-bottom: 0.5em;
+	text-align: center;
+}
+
+section img {
+	max-width: 200px;
+	border-radius: 50%;
+	display: block;
+	margin: 0 auto 1em;
+}
+
+section p {
+	font-size: 1.1em;
+	line-height: 1.6;
+	text-align: center;
+}
+
+
+.carousel {
+	position: relative;
+	max-width: 600px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.carousel-slides {
+	display: flex;
+	transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+	min-width: 100%;
+	box-sizing: border-box;
+	display: none;
+	text-align: center;
+	padding: 2em;
+	background-color: #fff;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-slide img {
+	max-width: 100%;
+	height: auto;
+	margin-bottom: 1em;
+}
+
+.carousel-button {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: rgba(0, 0, 0, 0.5);
+	color: #fff;
+	border: none;
+	padding: 1em;
+	cursor: pointer;
+}
+
+.carousel-button.left {
+	left: 0;
+}
+
+.carousel-button.right {
+	right: 0;
+}
+
+
+.skills-categories {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 1em;
+}
+
+.skills-categories button {
+	background-color: #333;
+	color: #fff;
+	border: none;
+	padding: 0.5em 1em;
+	margin: 0 0.5em;
+	cursor: pointer;
+}
+
+.skills-categories button:hover {
+	background-color: #555;
+}
+
+.skills-category {
+	display: none;
+	text-align: center;
+}
+
+.skills-category ul {
+	list-style: none;
+	padding: 0;
+}
+
+.skills-category li {
+	margin: 0.5em 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.rating {
+	font-size: 1em;
+	color: gold;
+	margin-left: 10px;
+}
+
+.expertise {
+	font-size: 1em;
+	color: #333;
+	font-weight: bold;
+	margin-left: 10px;
+}
+
+/* Centering the skills section */
+#skills-content {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	margin: 0 auto;
+	max-width: 600px;
+}
+
+.rating {
+	font-size: 1em;
+	color: gold;
+}
+
+.expertise {
+	font-size: 1em;
+	color: #333;
+	font-weight: bold;
+}
+
+#contact ul {
+	list-style: none;
+	padding: 0;
+	display: flex;
+	justify-content: center;
+}
+
+#contact ul li {
+	margin: 0 1em;
+}
+
+#contact ul li a {
+	font-size: 1.5em;
+}
+
+.button {
+	display: inline-block;
+	padding: 0.5em 1em;
+	margin: 1em 0;
+	background-color: #333;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.button:hover {
+	background-color: #555;
+}
+
+form.tmp {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin: 2em 0;
+}
+
+form.tmp input, form.tmp textarea, form.tmp button {
+	width: 80%;
+	max-width: 500px;
+	margin: 0.5em 0;
+	padding: 0.5em;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+form.tmp button {
+	background-color: #333;
+	color: #fff;
+	cursor: pointer;
+}
+
+form.tmp button:hover {
+	background-color: #555;
+}
+
+footer {
+	background-color: #333;
+	color: #fff;
+	text-align: center;
+	padding: 1em 0;
+	position: relative;
+	width: 100%;
+	bottom: 0;
+}
+
+@media (max-width: 768px) {
+	nav ul {
+		flex-direction: column;
+	}
+
+	nav ul li {
+		margin: 0.5em 0;
+	}
+
+	header h1 {
+		font-size: 2em;
+	}
+
+	section h2 {
+		font-size: 1.5em;
+	}
+
+	section p {
+		font-size: 1em;
+	}
+
+	#contact ul {
+		flex-direction: column;
+	}
+
+	#contact ul li {
+		margin: 0.5em 0;
+	}
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1000;
+}
+
+.overlay-content {
+	background: #fff;
+	padding: 20px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.duck {
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background-image: url('https://media.4-paws.org/b/8/d/5/b8d5441fec6b84e9c3cba899549b84bb0f193fff/VIER%20PFOTEN_2019-07-18_013-2890x2000.jpg');
+	background-size: contain;
+	background-repeat: no-repeat;
+	animation: glides 5s linear infinite;
+}
+
+@keyframes glides {
+	0% {
+		left: 0;
+		top: 0;
+	}
+	25% {
+		left: 50%;
+		top: 25%;
+	}
+	50% {
+		left: 100%;
+		top: 50%;
+	}
+	75% {
+		left: 50%;
+		top: 75%;
+	}
+	100% {
+		left: 0;
+		top: 100%;
+	}
+}
